@@ -9,13 +9,13 @@ public class VariablePractice extends OpMode
     @Override
     public void init()
     {
-        int teamNumber = 79583;
-        double motorSpeed = 8972656295.27;
-        boolean clawClosed = false;
+        int teamNumber = 30351;
+        double motorSpeed = 0.75;
+        boolean clawClosed = true;
 
-        telemetry.addData("team number", teamNumber);
-        telemetry.addData("motor speed", motorSpeed);
-        telemetry.addData("claw closed", clawClosed);
+        telemetry.addData("Team Number", teamNumber);
+        telemetry.addData("Motor Speed", motorSpeed);
+        telemetry.addData("Claw Closed", clawClosed);
     }
 
     @Override
