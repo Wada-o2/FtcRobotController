@@ -13,7 +13,7 @@ public class HelloWorld extends OpMode
     {
         telemetry.addData("Hello", "World");
         telemetry.addData("Aidan", "has created me.");
-        telemetry.addData("He", "feels proud of himself for this.");
+        telemetry.addData("Dingus", "feels proud of himself for this.");
         telemetry.addData("But", "it's not difficult.");
         telemetry.addData("And", "he needed a tutorial to do it.");
         telemetry.addData("What", "a loser.");
