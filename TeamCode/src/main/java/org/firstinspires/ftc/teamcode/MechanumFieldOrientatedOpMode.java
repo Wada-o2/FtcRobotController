@@ -8,22 +8,40 @@ import org.firstinspires.ftc.teamcode.Mechanism.MechanumDrive;
 @TeleOp
 public class MechanumFieldOrientatedOpMode extends OpMode
 {
-   MechanumDrive drive = new MechanumDrive();
+    MechanumDrive drive = new MechanumDrive();
 
-   double forward, strafe, rotate;
+    // shooter toggle state
+    boolean shooterOn = false;
+    boolean lastRightBumper = false;
 
-   @Override
-   public void init()
+    double forward, strafe, rotate;
+
+    @Override
+    public void init()
     {
         drive.init(hardwareMap);
     }
+
+    @Override
     public void loop()
     {
         forward = gamepad1.left_stick_y;
         strafe = gamepad1.left_stick_x;
         rotate = gamepad1.right_stick_x;
 
-        drive.driveFieldRelative(forward,strafe,rotate);
+        drive.driveFieldRelative(forward, strafe, rotate);
 
+        // Shooter toggle logic: when right bumpr is pressed (on edge), toggles the shooter on/ofg
+        boolean currentRightBumper = gamepad1.right_bumper;
+        if (currentRightBumper && !lastRightBumper) {
+            shooterOn = !shooterOn;
+        }
+        lastRightBumper = currentRightBumper;
+
+        if (shooterOn) {
+            drive.setShooterPower(1.0);  // shooter motor ON
+        } else {
+            drive.setShooterPower(0.0);  // shooter motor OFF
+        }
     }
 }
