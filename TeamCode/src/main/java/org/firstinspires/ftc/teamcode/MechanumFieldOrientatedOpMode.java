@@ -40,7 +40,7 @@ public class MechanumFieldOrientatedOpMode extends OpMode
 
         if (shooterOn) {
             drive.setShooterPower(1.0);  // shooter motor ON
-            drive.setHexPower(3.0);
+            drive.setHexPower(0.3);
         } else {
             drive.setShooterPower(0.0);  // shooter motor OFF
             drive.setHexPower(0.0);
