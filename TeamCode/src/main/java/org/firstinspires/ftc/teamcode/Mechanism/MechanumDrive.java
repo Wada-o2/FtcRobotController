@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
@@ -12,6 +13,7 @@ public class MechanumDrive
 {
     private DcMotor frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor, kevind, curry;
     private IMU imu;
+
 
     public void init(HardwareMap hwMap)
     {
@@ -40,6 +42,7 @@ public class MechanumDrive
                         RevHubOrientationOnRobot.UsbFacingDirection.FORWARD
                 );
         imu.initialize(new IMU.Parameters(RevOrientation));
+
     }
 
     public void drive(double forward,double strafe, double rotate)
