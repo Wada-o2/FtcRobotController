@@ -10,7 +10,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
 public class MechanumDrive
 {
-    private DcMotor frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor, kevind;
+    private DcMotor frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor, kevind, curry;
     private IMU imu;
 
     public void init(HardwareMap hwMap)
@@ -20,10 +20,12 @@ public class MechanumDrive
         frontRightMotor = hwMap.get(DcMotor.class, "frontRightDrive");
         backRightMotor = hwMap.get(DcMotor.class, "backRightDrive");
         kevind = hwMap.get(DcMotor.class, "kevind");
+        curry= hwMap.get(DcMotor.class, "curry");
 
         kevind.setDirection(DcMotor.Direction.REVERSE);
         frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+        curry.setDirection(DcMotor.Direction.REVERSE);
 
         frontLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -75,8 +77,11 @@ public class MechanumDrive
     }
 
     // Shooter control that allows external code to set shooter motor power, this cas itll be mechanumfield!
-    public void setShooterPower(double power) {
-        kevind.setPower(power);
+    public void setShooterPower(double power1) {
+        kevind.setPower(power1);
+    }
+    public void setHexPower(double power2) {
+        curry.setPower(power2);
     }
 }
 
