@@ -17,10 +17,7 @@ public class MechanumFieldOrientatedOpMode extends OpMode
     double forward, strafe, rotate;
 
     @Override
-    public void init()
-    {
-        drive.init(hardwareMap);
-    }
+    public void init() {drive.init(hardwareMap);}
 
     @Override
     public void loop()
@@ -40,10 +37,16 @@ public class MechanumFieldOrientatedOpMode extends OpMode
 
         if (shooterOn) {
             drive.setShooterPower(1.0);  // shooter motor ON
+
             drive.setHexPower(0.3);
+
+            drive.setBronny(1);
         } else {
             drive.setShooterPower(0.0);  // shooter motor OFF
+
             drive.setHexPower(0.0);
+
+            drive.setBronny(0.0);
 
         }
     }
