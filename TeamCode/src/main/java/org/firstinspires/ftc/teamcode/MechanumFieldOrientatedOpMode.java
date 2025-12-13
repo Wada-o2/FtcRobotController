@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
 import org.firstinspires.ftc.teamcode.Mechanism.MechanumDrive;
 
 @TeleOp
@@ -12,42 +13,55 @@ public class MechanumFieldOrientatedOpMode extends OpMode
 
     // shooter toggle state
     boolean shooterOn = false;
+    boolean wheelOn = false;
+    boolean shooterOn1 = false;
+    boolean shooterOn2 = false;
     boolean lastRightBumper = false;
+    boolean lastLeftBumper = false;
+    boolean lastXButton = false;
 
     double forward, strafe, rotate;
 
     @Override
-    public void init() {drive.init(hardwareMap);}
+    public void init() {
+        drive.init(hardwareMap);
+    }
 
     @Override
-    public void loop()
-    {
+    public void loop() {
         forward = gamepad1.left_stick_y;
-        strafe = gamepad1.left_stick_x;
-        rotate = gamepad1.right_stick_x;
+        strafe = -gamepad1.left_stick_x;
+        rotate = -gamepad1.right_stick_x;
 
-        drive.driveFieldRelative(forward, strafe, rotate);
+        drive.drive(forward, strafe, rotate);
 
         // Shooter toggle logic: when right bumpr is pressed (on edge), toggles the shooter on/ofg
-        boolean currentRightBumper = gamepad1.right_bumper;
-        if (currentRightBumper && !lastRightBumper) {
-            shooterOn = !shooterOn;
-        }
-        lastRightBumper = currentRightBumper;
+        boolean currentRightBumper = gamepad2.right_bumper;
+        boolean currentLeftBumper = gamepad2.left_bumper;
+        boolean currentXButton = gamepad2.x;
+        boolean currentYButton = gamepad2.yWasReleased();
+        if (currentRightBumper) {shooterOn = !shooterOn;}
+        if (shooterOn) {drive.setHexPower(0.4);} else {drive.setHexPower(0.0);}
+        if (currentLeftBumper) {wheelOn = !wheelOn;}
+        if (wheelOn) {drive.setShooterPower(0.4);} else {drive.setShooterPower(0.0);}
 
-        if (shooterOn) {
-            drive.setShooterPower(0.75);  // shooter motor ON
+//        if (currentXButton && !lastXButton)
+//        {
+//           shooterOn2 = !shooterOn2;
+//        }
+//        lastXButton = currentXButton;
+//       if (shooterOn2)
+//       {
+//            drive.setShooterPower(0.72);
+//       } else if (currentLeftBumper && !lastLeftBumper) {
+//           shooterOn1 = !shooterOn1;
+//       }
+//        lastLeftBumper = currentLeftBumper;
+//
+//        if (shooterOn1) {
+//            drive.setShooterPower(0.7);
+//        } else {
+//            drive.setShooterPower(0.0);
+//        }
 
-            drive.setHexPower(0.4);
-
-            drive.setBronny(1);
-        } else {
-            drive.setShooterPower(0.0);  // shooter motor OFF
-
-            drive.setHexPower(0.0);
-
-            drive.setBronny(0.0);
-
-        }
-    }
-}
+    }}

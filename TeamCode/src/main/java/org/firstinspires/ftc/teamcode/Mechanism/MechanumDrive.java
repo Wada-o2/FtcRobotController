@@ -15,7 +15,7 @@ public class MechanumDrive
     private DcMotor frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor, kevind, curry;
     private IMU imu;
 
-    private CRServo ServoR;
+
 
     public void init(HardwareMap hwMap)
     {
@@ -45,7 +45,7 @@ public class MechanumDrive
                 );
         imu.initialize(new IMU.Parameters(RevOrientation));
 
-        ServoR = hwMap.get(CRServo.class, "ServoR");
+        
     }
 
     public void drive(double forward,double strafe, double rotate)
@@ -89,6 +89,6 @@ public class MechanumDrive
     public void setHexPower(double power2) {
         curry.setPower(power2);
     }
-    public void setBronny(double power) {ServoR.setPower(power);}
+
 }
 
