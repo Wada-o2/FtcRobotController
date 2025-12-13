@@ -2,8 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
-import org.firstinspires.ftc.robotcore.internal.camera.delegating.DelegatingCaptureSequence;
 import org.firstinspires.ftc.teamcode.Mechanism.MechanumDrive;
 
 @TeleOp
@@ -18,8 +16,6 @@ public class MechanumFieldOrientatedOpMode extends OpMode
     boolean shooterOn2 = false;
     boolean lastRightBumper = false;
     boolean lastLeftBumper = false;
-    boolean lastXButton = false;
-
     double forward, strafe, rotate;
 
     @Override
@@ -38,8 +34,7 @@ public class MechanumFieldOrientatedOpMode extends OpMode
         // Shooter toggle logic: when right bumpr is pressed (on edge), toggles the shooter on/ofg
         boolean currentRightBumper = gamepad2.right_bumper;
         boolean currentLeftBumper = gamepad2.left_bumper;
-        boolean currentXButton = gamepad2.x;
-        boolean currentYButton = gamepad2.yWasReleased();
+
 
         if(currentRightBumper && !lastRightBumper)
         {
@@ -62,7 +57,7 @@ public class MechanumFieldOrientatedOpMode extends OpMode
         currentLeftBumper = lastLeftBumper;
         if (shooterOn1)
         {
-            drive.setShooterPower(0.72);
+            drive.setShooterPower(0.7);
         }
         else
         {
