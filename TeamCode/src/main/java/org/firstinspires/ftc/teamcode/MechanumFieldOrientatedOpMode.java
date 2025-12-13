@@ -40,28 +40,32 @@ public class MechanumFieldOrientatedOpMode extends OpMode
         boolean currentLeftBumper = gamepad2.left_bumper;
         boolean currentXButton = gamepad2.x;
         boolean currentYButton = gamepad2.yWasReleased();
-        if (currentRightBumper) {shooterOn = !shooterOn;}
-        if (shooterOn) {drive.setHexPower(0.4);} else {drive.setHexPower(0.0);}
-        if (currentLeftBumper) {wheelOn = !wheelOn;}
-        if (wheelOn) {drive.setShooterPower(0.4);} else {drive.setShooterPower(0.0);}
 
-//        if (currentXButton && !lastXButton)
-//        {
-//           shooterOn2 = !shooterOn2;
-//        }
-//        lastXButton = currentXButton;
-//       if (shooterOn2)
-//       {
-//            drive.setShooterPower(0.72);
-//       } else if (currentLeftBumper && !lastLeftBumper) {
-//           shooterOn1 = !shooterOn1;
-//       }
-//        lastLeftBumper = currentLeftBumper;
-//
-//        if (shooterOn1) {
-//            drive.setShooterPower(0.7);
-//        } else {
-//            drive.setShooterPower(0.0);
-//        }
+        if(currentRightBumper && !lastRightBumper)
+        {
+            shooterOn = !shooterOn;
+        }
+        currentRightBumper = lastRightBumper;
+        if (shooterOn)
+        {
+            drive.setHexPower(0.4);
+        }
+        else
+        {
+            drive.setHexPower(0.0);
+        }
 
+        if(currentLeftBumper && !lastLeftBumper)
+        {
+            shooterOn1 = !shooterOn1;
+        }
+        currentLeftBumper = lastLeftBumper;
+        if (shooterOn1)
+        {
+            drive.setShooterPower(0.72);
+        }
+        else
+        {
+            drive.setShooterPower(0.0);
+        }
     }}
