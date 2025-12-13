@@ -22,4 +22,4 @@ public class auto {
             rotate = 0;
             drive.drive(forward, strafe, rotate);
         }
-    }
+    }}
