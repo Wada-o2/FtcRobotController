@@ -1,12 +1,10 @@
 package org.firstinspires.ftc.teamcode.Mechanism;
 
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
-import com.qualcomm.robotcore.hardware.Servo;
+
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
@@ -15,7 +13,7 @@ public class MechanumDrive
     private DcMotor frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor, kevind, curry;
     private IMU imu;
 
-    private CRServo ServoR;
+
 
     public void init(HardwareMap hwMap)
     {
@@ -35,6 +33,8 @@ public class MechanumDrive
         backLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        kevind.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        curry.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         imu = hwMap.get(IMU.class, "imu");
 
@@ -45,7 +45,7 @@ public class MechanumDrive
                 );
         imu.initialize(new IMU.Parameters(RevOrientation));
 
-        ServoR = hwMap.get(CRServo.class, "ServoR");
+        
     }
 
     public void drive(double forward,double strafe, double rotate)
@@ -89,6 +89,6 @@ public class MechanumDrive
     public void setHexPower(double power2) {
         curry.setPower(power2);
     }
-    public void setBronny(double power) {ServoR.setPower(power);}
+
 }
 
