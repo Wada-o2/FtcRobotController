@@ -15,7 +15,6 @@ import java.security.cert.CertPathBuilder;
 public class Constants {
     public static FollowerConstants followerConstants = new FollowerConstants()
             .mass(9.1);
-
     public static MecanumConstants driveConstants = new MecanumConstants()
             .maxPower(1)
             .rightFrontMotorName("frontRightDrive")
@@ -24,41 +23,38 @@ public class Constants {
             .leftFrontMotorName("frontLeftDrive")
             .leftFrontMotorDirection(DcMotorSimple.Direction.REVERSE)
             .leftRearMotorDirection(DcMotorSimple.Direction.REVERSE)
-            .rightFrontMotorDirection(DcMotorSimple.Direction.REVERSE)
-            .rightRearMotorDirection(DcMotorSimple.Direction.REVERSE);
+            .rightFrontMotorDirection(DcMotorSimple.Direction.FORWARD)
+            .rightRearMotorDirection(DcMotorSimple.Direction.FORWARD);
+
+
+
     public static Follower createFollower(HardwareMap hardwareMap) {
         return new FollowerBuilder(followerConstants, hardwareMap)
-                .driveEncoderLocalizer(localizerConstants)
                 .pathConstraints(pathConstraints)
                 .mecanumDrivetrain(driveConstants)
                 .build();
+        return new FollowerBuilder(followerConstants, hardwareMap)
+                .driveEncoderLocalizer(localizerConstants)
+                /* other builder steps */
+                .build();
     }
+
     public static DriveEncoderConstants localizerConstants = new DriveEncoderConstants()
+            .robot_Width(14.25)
+            .robot_Length(7.5)
             .rightFrontMotorName("frontRightDrive")
             .rightRearMotorName("backRightDrive")
-            .leftRearMotorName("backLeftDrive")
-            .leftFrontMotorName("frontLeftDrive")
-            .leftFrontEncoderDirection(Encoder.REVERSE)
-            .leftRearEncoderDirection(Encoder.REVERSE)
-            .rightFrontEncoderDirection(Encoder.REVERSE)
-            .rightRearEncoderDirection(Encoder.REVERSE)
-            .robotWidth(14)
-            .robotLength(11.5);
-    /*return new FollowerBuilder(followerConstants, HardwareMap hardwareMap) {
-        .driveEncoderLocalizer(localizerConstants)
-        .build();
-    } */
+            .leftRearMotorName("")
+            .leftFrontMotorName("lf")
+            .leftFrontEncoderDirection(Encoder.FORWARD)
+            .leftRearEncoderDirection(Encoder.FORWARD)
+            .rightFrontEncoderDirection(Encoder.FORWARD)
+            .rightRearEncoderDirection(Encoder.FORWARD);
 
-    private CertPathBuilder driveEncoderLocalizer(DriveEncoderConstants localizerConstants) {
-       return driveEncoderLocalizer(localizerConstants);
-    }
+
+
 
     public static PathConstraints pathConstraints = new PathConstraints(0.99, 100, 1, 1);
 
-   /* public static Follower createFollower(HardwareMap hardwareMap) {
-        return new FollowerBuilder(followerConstants, hardwareMap)
-                .pathConstraints(pathConstraints)
-                .mecanumDrivetrain(driveConstants)
-                .build(); */
     }
 

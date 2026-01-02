@@ -41,7 +41,7 @@ public class MechanumFieldOrientatedOpMode extends OpMode
         currentRightBumper = lastRightBumper;
         if (shooterOn)
         {
-            drive.setHexPower(0.55);
+            drive.setHexPower(0.5);
         }
         else
         {
@@ -55,7 +55,7 @@ public class MechanumFieldOrientatedOpMode extends OpMode
         currentLeftBumper = lastLeftBumper;
         if (shooterOn1)
         {
-            drive.setShooterPower(0.7);
+            drive.setShooterPower(0.65);
         }
         else
         {
