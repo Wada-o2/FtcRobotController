@@ -9,8 +9,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
-public class MechanumDrive
-{
+public class MechanumDrive {
         private DcMotor frontLeftMotor;
         private DcMotor backLeftMotor;
         private DcMotor frontRightMotor;
