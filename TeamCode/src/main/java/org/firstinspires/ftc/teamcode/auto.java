@@ -13,8 +13,8 @@ import org.firstinspires.ftc.teamcode.Mechanism.MechanumDrive;
 
         @Override
         public void loop() {
-            forward = 0;
-            strafe = 0.1;
+            forward = 0.1;
+            strafe = 0;
             rotate = 0;
             drive.drive(forward, strafe, rotate);
         }

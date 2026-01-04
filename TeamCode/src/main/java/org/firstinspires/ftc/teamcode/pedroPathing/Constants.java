@@ -15,6 +15,7 @@ import java.security.cert.CertPathBuilder;
 public class Constants {
     public static FollowerConstants followerConstants = new FollowerConstants()
             .mass(9.1);
+
     public static MecanumConstants driveConstants = new MecanumConstants()
             .maxPower(1)
             .rightFrontMotorName("frontRightDrive")
@@ -32,20 +33,18 @@ public class Constants {
         return new FollowerBuilder(followerConstants, hardwareMap)
                 .pathConstraints(pathConstraints)
                 .mecanumDrivetrain(driveConstants)
-                .build();
-        return new FollowerBuilder(followerConstants, hardwareMap)
                 .driveEncoderLocalizer(localizerConstants)
                 /* other builder steps */
                 .build();
     }
 
     public static DriveEncoderConstants localizerConstants = new DriveEncoderConstants()
-            .robot_Width(14.25)
-            .robot_Length(7.5)
+            .robotWidth(14.25)
+            .robotLength(7.5)
             .rightFrontMotorName("frontRightDrive")
             .rightRearMotorName("backRightDrive")
-            .leftRearMotorName("")
-            .leftFrontMotorName("lf")
+            .leftRearMotorName("backLeftDrive")
+            .leftFrontMotorName("frontLeftDrive")
             .leftFrontEncoderDirection(Encoder.FORWARD)
             .leftRearEncoderDirection(Encoder.FORWARD)
             .rightFrontEncoderDirection(Encoder.FORWARD)

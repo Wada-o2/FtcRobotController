@@ -30,35 +30,43 @@ public class MechanumFieldOrientatedOpMode extends OpMode
         drive.drive(forward, strafe, rotate);
 
         // Shooter toggle logic: when right bumpr is pressed (on edge), toggles the shooter on/ofg
-        boolean currentRightBumper = gamepad2.right_bumper;
-        boolean currentLeftBumper = gamepad2.left_bumper;
+        //boolean currentRightBumper = gamepad2.right_bumper;
+        //boolean currentLeftBumper = gamepad2.left_bumper;
 
 
-        if(currentRightBumper && !lastRightBumper)
-        {
-            shooterOn = !shooterOn;
-        }
-        currentRightBumper = lastRightBumper;
-        if (shooterOn)
-        {
-            drive.setHexPower(0.5);
-        }
-        else
-        {
-            drive.setHexPower(0.0);
-        }
+//        if (gamepad2.x) {drive.setHexPower(0.5);} else {drive.setHexPower(0.5);}
+//        if (gamepad2.y) {drive.setHexPower(0);}
+//        buttonstarttest = gamepad2.left_stick_y;
+//        if buttonstarttest!=0:
+//
 
-        if(currentLeftBumper && !lastLeftBumper)
-        {
-            shooterOn1 = !shooterOn1;
-        }
-        currentLeftBumper = lastLeftBumper;
-        if (shooterOn1)
-        {
-            drive.setShooterPower(0.65);
-        }
-        else
-        {
-            drive.setShooterPower(0.0);
-        }
+        if (gamepad2.right_bumper) {drive.setShooterPower(0.7);} else {drive.setShooterPower(0);}
+        if (gamepad2.left_bumper) {drive.setHexPower(0.55);} else {drive.setHexPower(0);}
+//        if(currentRightBumper && !lastRightBumper)
+//        {
+//            shooterOn = !shooterOn;
+//        }
+//        currentRightBumper = lastRightBumper;
+//        if (shooterOn)
+//        {
+//            drive.setHexPower(0.55);
+//        }
+//        else
+//        {
+//            drive.setHexPower(0.0);
+//        }
+//
+//        if(currentLeftBumper && !lastLeftBumper)
+//        {
+//            shooterOn1 = !shooterOn1;
+//        }
+//        currentLeftBumper = lastLeftBumper;
+//        if (shooterOn1)
+//        {
+//            drive.setShooterPower(0.7);
+//        }
+//        else
+//        {
+//            drive.setShooterPower(0.0);
+//        }
     }}
