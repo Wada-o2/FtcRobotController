@@ -29,7 +29,6 @@ public class MechanumDrive {
             curry= hwMap.get(DcMotor.class, "curry");
 
             kevind.setDirection(DcMotor.Direction.REVERSE);
-            frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
             backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
             curry.setDirection(DcMotor.Direction.REVERSE);
 
@@ -96,4 +95,3 @@ public class MechanumDrive {
             curry.setPower(power2);
         }
 }
-
