@@ -9,15 +9,15 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 
-public class MechanumDrive {
+public class CappNightMechanumDrive {
         private DcMotor frontLeftMotor;
         private DcMotor backLeftMotor;
         private DcMotor frontRightMotor;
         private DcMotor backRightMotor;
-        public DcMotorEx kevind;
+        private DcMotorEx kevind;
         private DcMotor curry;
         private IMU imu;
-        PIDFCoefficients pidfCoefficients1 = new PIDFCoefficients(610, 0, 0, 13.6183);
+        PIDFCoefficients pidfCoefficients1 = new PIDFCoefficients(0, 0, 0, 100);
 
         public void init(HardwareMap hwMap)
         {
@@ -27,11 +27,9 @@ public class MechanumDrive {
             backRightMotor = hwMap.get(DcMotor.class, "backRightDrive");
             kevind = hwMap.get(DcMotorEx.class, "kevind");
             curry= hwMap.get(DcMotor.class, "curry");
-
             kevind.setDirection(DcMotor.Direction.REVERSE);
             backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
             curry.setDirection(DcMotor.Direction.REVERSE);
-
             frontLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             backLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -39,9 +37,7 @@ public class MechanumDrive {
             kevind.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             kevind.setPIDFCoefficients(DcMotor.RunMode.RUN_USING_ENCODER, pidfCoefficients1);
             curry.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
             imu = hwMap.get(IMU.class, "imu");
-
             RevHubOrientationOnRobot RevOrientation = new RevHubOrientationOnRobot
                     (
                             RevHubOrientationOnRobot.LogoFacingDirection.LEFT,
@@ -58,15 +54,12 @@ public class MechanumDrive {
             double backLeftPower = forward - strafe + rotate;
             double frontRightPower = forward - strafe - rotate;
             double backRightPower = forward + strafe - rotate;
-
             double maxPower = 1.0;
             double maxSpeed = 1.0;
-
             maxPower = Math.max(maxPower, Math.abs(frontLeftPower));
             maxPower = Math.max(maxPower, Math.abs(backLeftPower));
             maxPower = Math.max(maxPower, Math.abs(frontRightPower));
             maxPower = Math.max(maxPower, Math.abs(backRightPower));
-
             frontLeftMotor.setPower(maxSpeed * (frontLeftPower/maxPower));
             backLeftMotor.setPower(maxSpeed * (backLeftPower/maxPower));
             frontRightMotor.setPower(maxSpeed * (frontRightPower/maxPower));
@@ -77,20 +70,14 @@ public class MechanumDrive {
         {
             double theta = Math.atan2(forward, strafe);
             double r = Math.hypot(strafe, forward);
-
             theta = AngleUnit.normalizeRadians(theta - imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS));
-
             double newForward = r * Math.sin(theta);
             double newStrafe = r * Math.cos(theta);
-
             this.drive(newForward, newStrafe, rotate);
         }
-
-        // Shooter control that allows external code to set shooter motor power, this cas itll be mechanumfield!
         public void setShooterPower(double power1) {
             kevind.setPower(power1);
         }
-
         public void setHexPower(double power2) {
             curry.setPower(power2);
         }

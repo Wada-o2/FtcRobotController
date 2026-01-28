@@ -7,18 +7,20 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
+
 @TeleOp
 public class FlywheelTest extends OpMode
 {
+
    public DcMotorEx FlywheelMotor;
    public DcMotor HexMotor;
    public double HighVelocity = 1700;
-   public double LowVelocity = 1500;
+   public double LowVelocity = 1600;
    double curTargetVelocity = HighVelocity;
    double F = 0;
    double P = 0;
    double D = 0;
-   double[] stepSizes = {10.0, 1.0, 0.1, 0.001, 0.0001};
+   double[] stepSizes = {1000,100, 10.0, 1.0, 0.1, 0.001, 0.0001};
    int stepIndex = 1;
     @Override
     public void init()
@@ -44,7 +46,7 @@ public class FlywheelTest extends OpMode
         // get all gamepad commands
         // set target velocity
         // update telemetry
-
+        //drive.drive(gamepad1.left_stick_y,-gamepad1.left_stick_x,-gamepad1.right_stick_x);
         if(gamepad1.yWasPressed())
         {
             if(curTargetVelocity == HighVelocity)
