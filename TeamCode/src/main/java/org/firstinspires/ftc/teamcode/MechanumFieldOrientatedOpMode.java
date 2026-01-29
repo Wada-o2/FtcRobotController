@@ -18,10 +18,10 @@ public class MechanumFieldOrientatedOpMode extends OpMode {
         telemetry.addData("Current Velocity", "%.2f", actualVelocity);
 
 
-        if (gamepad2.dpad_down) {SP=0.85;}
-        if (gamepad2.dpad_right) {SP=1800;}
-        if (gamepad2.dpad_up) {SP=1700;}
-        if (gamepad2.dpad_left) {SP=1600;}
+        if (gamepad2.dpad_down) {SP=1400;}
+        if (gamepad2.dpad_right) {SP=1700;}
+        if (gamepad2.dpad_up) {SP=1600;}
+        if (gamepad2.dpad_left) {SP=1500;}
         if (gamepad2.left_bumper) {drive.setHexPower(0.55);} else {drive.setHexPower(0);}
         if (gamepad2.right_bumper) {drive.kevind.setVelocity(SP);} else {drive.setShooterPower(0);}
     }}
