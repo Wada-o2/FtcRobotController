@@ -17,6 +17,6 @@ public class MechanumFieldOrientatedOpMode extends OpMode {
         if (gamepad2.dpad_left) {SP=1500;}
         if (gamepad2.dpad_up) {SP=1600;}
         if (gamepad2.dpad_right) {SP=1700;}
-        if (gamepad2.left_bumper) {drive.setHexPower(0.8);} else {drive.setHexPower(0);}
+        if (gamepad2.left_bumper) {drive.setHexPower(1.0);} else {drive.setHexPower(0);}
         if (gamepad2.right_bumper) {drive.kevind.setVelocity(SP);} else {drive.setShooterPower(0);}
     }}
