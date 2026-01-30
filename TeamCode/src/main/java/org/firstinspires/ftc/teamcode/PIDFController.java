@@ -18,7 +18,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
  */
 
 @Autonomous(name="Concept: Change PIDF Controller", group = "Concept")
-public class ConceptChangePIDFController extends LinearOpMode {
+public class PIDFController extends LinearOpMode {
 
     // our DC motor
     DcMotor Flywheel;
