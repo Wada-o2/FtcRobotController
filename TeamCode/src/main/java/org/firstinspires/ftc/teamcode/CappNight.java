@@ -3,12 +3,19 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 @TeleOp
 public class CappNight extends OpMode {
+    double SP = 1600;
     CappNightMechanumDrive drive = new CappNightMechanumDrive();
     @Override
     public void init() {drive.init(hardwareMap);}
     @Override
     public void loop() {
         drive.drive(gamepad1.left_stick_y,-gamepad1.left_stick_x,-gamepad1.right_stick_x);
-        if (gamepad2.left_bumper) {drive.setHexPower(0.55);} else {drive.setHexPower(0);}
-        if (gamepad2.right_bumper) {drive.setShooterPower(1);} else {drive.setShooterPower(1);}
+        double actualVelocity = drive.kevind.getVelocity();
+        telemetry.addData("Current Velocity", "%.2f", actualVelocity);
+        if (gamepad2.dpad_down) {SP=1500;}
+        if (gamepad2.dpad_left) {SP=1600;}
+        if (gamepad2.dpad_up) {SP=1700;}
+        if (gamepad2.dpad_right) {SP=1800;}
+        if (gamepad2.left_bumper) {drive.setHexPower(0.8);} else {drive.setHexPower(0);}
+        if (gamepad2.right_bumper) {drive.kevind.setVelocity(SP);} else {drive.setShooterPower(0);}
     }}
